@@ -6,7 +6,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace AutomationPracticeFramework.Pages
 {
-    class SignInPage
+    class SignUpPage
     {
         readonly IWebDriver driver;
 
@@ -14,8 +14,10 @@ namespace AutomationPracticeFramework.Pages
         public By email = By.Id("email");
         public By password = By.Id("passwd");
         public By signinbtn = By.Id("SubmitLogin");
+        public By createanaccountemail = By.Id("email_create");
+        public By createaccount = By.Id("SubmitCreate");
 
-        public SignInPage(IWebDriver driver)
+        public SignUpPage(IWebDriver driver)
         {
             this.driver = driver;
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));

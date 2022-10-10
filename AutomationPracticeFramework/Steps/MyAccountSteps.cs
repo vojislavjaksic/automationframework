@@ -7,7 +7,7 @@ using TechTalk.SpecFlow;
 namespace AutomationPracticeFramework.Steps
 {
     [Binding]
-    public class MyAccountSteps : Base
+    public class MyAccountSteps : Base 
     {
         Utilities ut = new Utilities(Driver);
         HomePage hp = new HomePage(Driver);
@@ -21,7 +21,7 @@ namespace AutomationPracticeFramework.Steps
         [When(@"user fills the fields '(.*)' emailaddress and '(.*)' password")]
         public void WhenUserFillsTheFieldsEmailaddressAndPassword(string emailaddress, string password)
         {
-            SignInPage sip = new SignInPage(Driver);
+            SignUpPage sip = new SignUpPage(Driver);
             ut.EnterTextInElement(sip.email, emailaddress);
             ut.EnterTextInElement(sip.password, password);
         }
@@ -29,7 +29,7 @@ namespace AutomationPracticeFramework.Steps
         [When(@"submits the form")]
         public void WhenSubmitsTheForm()
         {
-            SignInPage sip = new SignInPage(Driver);
+            SignUpPage sip = new SignUpPage(Driver);
             ut.ClickOnElement(sip.signinbtn);
         }
 
@@ -40,5 +40,34 @@ namespace AutomationPracticeFramework.Steps
             Assert.True(map.MyAccountPageIsDisplayed(page), "Expected page is not displayed");
 
         }
+
+        [Given(@"types in the email address")]
+        public void GivenTypesInTheEmailAddress()
+        {
+            SignUpPage sip = new SignUpPage(Driver);
+            ut.EnterTextInElement(sip.email, ut.GenerateRandomEmail);
+        }
+
+        [Given(@"clicks '(.*)' button")]
+        public void GivenClicksButton(string p0)
+        {
+            SignUpPage sip = new SignUpPage(Driver);
+            ut.ClickOnElement(sip.createaccount);
+        }
+
+        [When(@"fiils the all required fields")]
+        public void WhenFiilsTheAllRequiredFields()
+        {
+            CreateAccountPage cap = new CreateAccountPage(Driver);
+            ut.EnterTextInElement(cap.firstname, TestConstants.FirstName);
+
+        }
+
+        [Then(@"the he should be able to create an account")]
+        public void ThenTheHeShouldBeAbleToCreateAnAccount()
+        {
+            ScenarioContext.Current.Pending();
+        }
+
     }
 }

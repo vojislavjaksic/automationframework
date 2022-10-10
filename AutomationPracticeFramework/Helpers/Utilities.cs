@@ -49,5 +49,15 @@ namespace AutomationPracticeFramework.Helpers
         {
             return driver.FindElement(locator).GetAttribute("textContent");
         }
+
+        internal void EnterTextInElement(By email, Func<string> generateRandomEmail)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void EnterTextInElement(object customerfirstname)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
