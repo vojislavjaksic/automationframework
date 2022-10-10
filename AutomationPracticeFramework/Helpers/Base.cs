@@ -11,6 +11,7 @@ namespace AutomationPracticeFramework.Helpers
    public class Base
     {
         public static IWebDriver Driver { get; set; }
+        //test
 
         [BeforeScenario]
         public static void BeforeScenario()
@@ -28,3 +29,4 @@ namespace AutomationPracticeFramework.Helpers
         }
     }
 }
+
