@@ -23,6 +23,12 @@ namespace AutomationPracticeFramework.Helpers
 
         }
 
+        public void ClearInputField(By locator)
+
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(locator)).Clear();
+        }
         public void DropdownSelect(By select, string option)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
@@ -40,6 +46,11 @@ namespace AutomationPracticeFramework.Helpers
 
         }
 
+        internal string ReturnTextFromElement()
+        {
+            throw new NotImplementedException();
+        }
+
         public string GenerateRandomEmail()
         {
             return string.Format("email{0}@mailinator.com", RandomName.Next(10000, 100000));
@@ -50,14 +61,12 @@ namespace AutomationPracticeFramework.Helpers
             return driver.FindElement(locator).GetAttribute("textContent");
         }
 
-        internal void EnterTextInElement(By email, Func<string> generateRandomEmail)
+      
+        public IWebElement TextPresentInElement(string text)
         {
-            throw new NotImplementedException();
-        }
-
-        internal void EnterTextInElement(object customerfirstname)
-        {
-            throw new NotImplementedException();
+            By textelement = By.XPath("//*[contains(text(),'" + text + "')]");
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+            return wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(textelement));
         }
     }
 }

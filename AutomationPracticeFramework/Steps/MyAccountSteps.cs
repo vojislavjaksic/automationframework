@@ -12,6 +12,12 @@ namespace AutomationPracticeFramework.Steps
         Utilities ut = new Utilities(Driver);
         HomePage hp = new HomePage(Driver);
 
+        private readonly PersonData personData;
+        public MyAccountSteps(PersonData personData)
+        {
+            this.personData = personData;  
+        }
+
         [Given(@"user clicks on Sign in section")]
         public void GivenUserClicksOnSection()
         {
@@ -45,7 +51,7 @@ namespace AutomationPracticeFramework.Steps
         public void GivenTypesInTheEmailAddress()
         {
             SignUpPage sip = new SignUpPage(Driver);
-            ut.EnterTextInElement(sip.email, ut.GenerateRandomEmail);
+            ut.EnterTextInElement(sip.createanaccountemail, ut.GenerateRandomEmail());
         }
 
         [Given(@"clicks '(.*)' button")]
@@ -59,14 +65,24 @@ namespace AutomationPracticeFramework.Steps
         public void WhenFiilsTheAllRequiredFields()
         {
             CreateAccountPage cap = new CreateAccountPage(Driver);
-            ut.EnterTextInElement(cap.firstname, TestConstants.FirstName);
+            ut.EnterTextInElement(cap.customerfirstname, TestConstants.FirstName);
+            ut.EnterTextInElement(cap.customerlastname, TestConstants.LastName);
+            personData.FullName = TestConstants.FirstName + " " + TestConstants.LastName;
+            ut.EnterTextInElement(cap.password, TestConstants.Password);
+            ut.EnterTextInElement(cap.address, TestConstants.Address);
+            ut.EnterTextInElement(cap.city, TestConstants.City);
+            ut.EnterTextInElement(cap.postcode, TestConstants.ZipCode);
+            ut.EnterTextInElement(cap.mobilephone, TestConstants.MobilePhone);
+            ut.DropdownSelect(cap.state, TestConstants.State);
+
+            ut.ClickOnElement(cap.submitaccount);
 
         }
 
         [Then(@"the he should be able to create an account")]
         public void ThenTheHeShouldBeAbleToCreateAnAccount()
         {
-            ScenarioContext.Current.Pending();
+            Assert.True(ut.TextPresentInElement(personData.FullName).Displayed, "");
         }
 
     }

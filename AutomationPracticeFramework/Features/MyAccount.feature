@@ -1,7 +1,4 @@
-﻿Feature: MyAccount
-	As a user
-	When I enter my credientials
-	I want to be able to access my account
+﻿Feature: MyAccount 
 
 Background: 
 Given user clicks on Sign in section
