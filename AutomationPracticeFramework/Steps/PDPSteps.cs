@@ -68,7 +68,7 @@ namespace AutomationPracticeFramework.Steps
         {
             CartPage cp = new CartPage(Driver);
             Assert.True(cp.CartPageIsDisplayed(page), "Expected page is not displayed");
-            Assert.True(ut.TextPresentInElement(productData.ProductName).Displayed, "");
+            Assert.That(ut.ReturnTextFromElement(cp.productname), Is.EqualTo(productData.ProductName), "");
         }
 
 

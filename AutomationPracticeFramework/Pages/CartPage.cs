@@ -11,6 +11,7 @@ namespace AutomationPracticeFramework.Pages
         readonly IWebDriver driver;
 
         public By cartpage = By.Id("order");
+        public By productname = By.CssSelector(".cart_description .product-name");
 
         public CartPage(IWebDriver driver)
         {
@@ -26,6 +27,8 @@ namespace AutomationPracticeFramework.Pages
             return wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(page)).Displayed;
 
         }
+
+        
 
 
     }

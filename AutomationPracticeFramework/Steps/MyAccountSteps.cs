@@ -13,9 +13,14 @@ namespace AutomationPracticeFramework.Steps
         HomePage hp = new HomePage(Driver);
 
         private readonly PersonData personData;
+        private readonly WishListName wishListName;
         public MyAccountSteps(PersonData personData)
         {
             this.personData = personData;  
+        }
+        public MyAccountSteps(WishListName wishlistName)
+        {
+            this.wishlistName = wishlistName;
         }
 
         [Given(@"user clicks on Sign in section")]
@@ -88,6 +93,7 @@ namespace AutomationPracticeFramework.Steps
         [Given(@"user logs in with '(.*)' emailaddress and '(.*)' password and is on that page")]
         public void GivenUserLogsInWithEmailaddressAndPasswordAndIsOnThatPage(string emailaddress, string password, string page)
         {
+
             GivenUserClicksOnSection();
             WhenUserFillsTheFieldsEmailaddressAndPassword(emailaddress, password);
             WhenSubmitsTheForm();
@@ -95,14 +101,26 @@ namespace AutomationPracticeFramework.Steps
 
 
         }
-        [Given(@"user clicks on '(.*)' section")]
-        public void GivenUserClicksOnSection(string p0)
+        [Given(@"user clicks on '(.*)' button")]
+        public void GivenUserClicksOnButton()
         {
-
-            SignUpPage sip = new SignUpPage(Driver);
-           // ut.ClickOnElement(sip.wishlistenter);
+            MyAccountPage map = new MyAccountPage(Driver);
+            ut.ClickOnElement(map.wishlistenter);
         }
 
+        [Given(@"enters random whislist name and creates wishlist")]
+        public void GivenEntersRandomWhislistNameAndCreatesWishlist()
+        {
+            MyWishlistPage mwp = new MyWishlistPage(Driver);
+            ut.EnterTextInElement(mwp.nameset, ut.GenerateRandomName());
+            ut.ClickOnElement(mwp.submit);
+        }
+
+        [Then(@"user should be able to see that wishlist")]
+        public void ThenUserShouldBeAbleToSeeThatWishlist()
+        {
+            ScenarioContext.Current.Pending();
+        }
 
 
     }

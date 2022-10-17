@@ -16,6 +16,7 @@ namespace AutomationPracticeFramework.Pages
         public By signinbtn = By.Id("SubmitLogin");
         public By createanaccountemail = By.Id("email_create");
         public By createaccount = By.Id("SubmitCreate");
+       
 
         public SignUpPage(IWebDriver driver)
         {

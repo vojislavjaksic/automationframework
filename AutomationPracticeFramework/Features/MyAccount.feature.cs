@@ -180,7 +180,7 @@ testRunner.Given("user logs in with \'jaksa14@gmail.com\' emailaddress and \'123
                         " that page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 21
-testRunner.And("user clicks on \'MY WISHLISTS\' section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user clicks on \'MY WISHLISTS\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 22
 testRunner.And("enters random whislist name and creates wishlist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");

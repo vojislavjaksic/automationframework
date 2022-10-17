@@ -46,10 +46,11 @@ namespace AutomationPracticeFramework.Helpers
 
         }
 
-        internal string ReturnTextFromElement()
+        public string GenerateRandomName()
         {
-            throw new NotImplementedException();
+            return string.Format("name{0}", RandomName.Next(10000, 100000));
         }
+
 
         public string GenerateRandomEmail()
         {
