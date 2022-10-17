@@ -11,8 +11,9 @@ namespace AutomationPracticeFramework.Pages
         readonly IWebDriver driver;
         public By pdpdialog = By.Id("product");
         public By quantity = By.Id("quantity_wanted");
-        public By productname = By.XPath("//h1[@itemprop='name'");
+        public By productname = By.XPath("//h1[@itemprop='name']");
         public By addbutton = By.Id("add_to_cart");
+        
         public PDPPage(IWebDriver driver)
         {
             this.driver = driver;

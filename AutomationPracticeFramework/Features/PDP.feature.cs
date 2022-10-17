@@ -109,7 +109,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("user proceeds to checkout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 14
- testRunner.Then("cart is opened and product is added to cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("\'Your shopping cart\' is opened and product is added to cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

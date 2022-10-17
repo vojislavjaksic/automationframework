@@ -10,7 +10,7 @@ namespace AutomationPracticeFramework.Pages
     {
         readonly IWebDriver driver;
         public By plppage = By.Id("category");
-        public By firstproduct = By.CssSelector(".product_img_link");
+        public By firstproduct = By.ClassName("product_img_link");
 
         public PLPPage(IWebDriver driver)
         {

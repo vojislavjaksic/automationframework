@@ -85,5 +85,25 @@ namespace AutomationPracticeFramework.Steps
             Assert.True(ut.TextPresentInElement(personData.FullName).Displayed, "");
         }
 
+        [Given(@"user logs in with '(.*)' emailaddress and '(.*)' password and is on that page")]
+        public void GivenUserLogsInWithEmailaddressAndPasswordAndIsOnThatPage(string emailaddress, string password, string page)
+        {
+            GivenUserClicksOnSection();
+            WhenUserFillsTheFieldsEmailaddressAndPassword(emailaddress, password);
+            WhenSubmitsTheForm();
+            ThenHeShouldBeAbleToAccess(page);
+
+
+        }
+        [Given(@"user clicks on '(.*)' section")]
+        public void GivenUserClicksOnSection(string p0)
+        {
+
+            SignUpPage sip = new SignUpPage(Driver);
+           // ut.ClickOnElement(sip.wishlistenter);
+        }
+
+
+
     }
 }

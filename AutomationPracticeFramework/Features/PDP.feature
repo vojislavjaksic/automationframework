@@ -11,4 +11,4 @@ Scenario: user can add product to cart
 	And increases quantity to '2'
 	When user clicks on aad to cart button
 	And user proceeds to checkout
-	Then cart is opened and product is added to cart
+	Then 'Your shopping cart' is opened and product is added to cart
