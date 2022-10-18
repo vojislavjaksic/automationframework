@@ -4,9 +4,9 @@ using System.Text;
 
 namespace AutomationPracticeFramework.Helpers
 {
-    class WishListName
+    public class WishListName
     {
-        public string wishlistName;
+        public string wishlistname;
     }
 }
 

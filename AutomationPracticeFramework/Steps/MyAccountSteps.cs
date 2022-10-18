@@ -7,21 +7,21 @@ using TechTalk.SpecFlow;
 namespace AutomationPracticeFramework.Steps
 {
     [Binding]
-    public class MyAccountSteps : Base 
+    public class MyAccountSteps : Base
     {
         Utilities ut = new Utilities(Driver);
         HomePage hp = new HomePage(Driver);
 
-        private readonly PersonData personData;
-        private readonly WishListName wishListName;
-        public MyAccountSteps(PersonData personData)
+        public readonly PersonData personData;
+        private readonly WishListName wishlistName;
+
+        public MyAccountSteps(PersonData personData, WishListName wishlistName)
         {
-            this.personData = personData;  
-        }
-        public MyAccountSteps(WishListName wishlistName)
-        {
+            this.personData = personData;
             this.wishlistName = wishlistName;
         }
+
+
 
         [Given(@"user clicks on Sign in section")]
         public void GivenUserClicksOnSection()
@@ -60,7 +60,7 @@ namespace AutomationPracticeFramework.Steps
         }
 
         [Given(@"clicks '(.*)' button")]
-        public void GivenClicksButton(string p0)
+        public void GivenClicksButton()
         {
             SignUpPage sip = new SignUpPage(Driver);
             ut.ClickOnElement(sip.createaccount);
@@ -91,35 +91,38 @@ namespace AutomationPracticeFramework.Steps
         }
 
         [Given(@"user logs in with '(.*)' emailaddress and '(.*)' password and is on that page")]
-        public void GivenUserLogsInWithEmailaddressAndPasswordAndIsOnThatPage(string emailaddress, string password, string page)
+        public void GivenUserLogsInWithEmailaddressAndPasswordAndIsOnThatPage(string emailaddress, string password)
         {
 
             GivenUserClicksOnSection();
             WhenUserFillsTheFieldsEmailaddressAndPassword(emailaddress, password);
             WhenSubmitsTheForm();
-            ThenHeShouldBeAbleToAccess(page);
-
 
         }
-        [Given(@"user clicks on '(.*)' button")]
-        public void GivenUserClicksOnButton()
+        [Given(@"user clicks on MY WISHLISTS button")]
+        public void GivenUserClicksOnMYWISHLISTSButton()
         {
             MyAccountPage map = new MyAccountPage(Driver);
             ut.ClickOnElement(map.wishlistenter);
         }
+
 
         [Given(@"enters random whislist name and creates wishlist")]
         public void GivenEntersRandomWhislistNameAndCreatesWishlist()
         {
             MyWishlistPage mwp = new MyWishlistPage(Driver);
             ut.EnterTextInElement(mwp.nameset, ut.GenerateRandomName());
+            wishlistName.wishlistname = ut.ReturnTextFromElement(mwp.nameset);
             ut.ClickOnElement(mwp.submit);
         }
 
-        [Then(@"user should be able to see that wishlist")]
-        public void ThenUserShouldBeAbleToSeeThatWishlist()
+        
+        [Then(@"user should be able to see '(.*)' and items")]
+        public void ThenUserShouldBeAbleToSeeAndItems(string page)
         {
-            ScenarioContext.Current.Pending();
+            MyWishlistPage mwp = new MyWishlistPage(Driver);
+            Assert.True(mwp.MyWishlistPageIsDisplayed(page), "Expected page is not displayed");
+            Assert.That(ut.ReturnTextFromElement(mwp.wlsname), Does.Contain(wishlistName.wishlistname), "");
         }
 
 
