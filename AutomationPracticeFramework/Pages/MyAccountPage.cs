@@ -13,6 +13,7 @@ namespace AutomationPracticeFramework.Pages
         public By myaccount = By.Id("my-account");
         public By navigationpage = By.Id("navigation_page");
         public By wishlistenter = By.ClassName("lnk_wishlist");
+        public By myinfo = By.Id("icon-user");
         public MyAccountPage(IWebDriver driver)
         {
             this.driver = driver;

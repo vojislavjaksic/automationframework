@@ -21,3 +21,11 @@ Given user logs in with 'jaksa14@gmail.com' emailaddress and '12345' password an
 And user clicks on MY WISHLISTS button
 And enters random whislist name and creates wishlist
 Then user should be able to see 'My wishlists' and items
+
+Scenario: User can change his last name to random
+Given user logs in with 'jaksa14@gmail.com' emailaddress and '12345' password and is on that page
+And clicks on My personal information button
+And fills Last name field with a random name 
+And enters '12345' password and clicks on Save button
+Then he should have updated last name
+

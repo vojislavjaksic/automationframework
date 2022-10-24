@@ -125,6 +125,36 @@ namespace AutomationPracticeFramework.Steps
             Assert.That(ut.ReturnTextFromElement(mwp.wlsname), Does.Contain(wishlistName.wishlistname), "");
         }
 
+        [Given(@"clicks on My personal information button")]
+        public void GivenClicksOnMyPersonalInformationButton()
+        {
+            MyAccountPage map = new MyAccountPage(Driver);
+            ut.ClickOnElement(map.myinfo);
+
+        }
+
+        [Given(@"fills Last name field with a random name")]
+        public void GivenFillsLastNameFieldWithARandomName()
+        {
+            MyPersonalnfo mpi = new MyPersonalnfo(Driver);
+            string lastName = ut.GenerateRandomName();
+            personData.FullName= TestConstants.FirstName + " " + lastName;
+
+
+            ut.EnterTextInElement(mpi.lastnamefield, lastName);
+            wishlistName.wishlistname = ut.ReturnTextFromElement(mpi.lastnamefield);
+                        
+        }
+
+        [Given(@"enters '(.*)' password and clicks on Save button")]
+        public void GivenEntersPasswordAndClicksOnSaveButton(int p0)
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+
+
+
 
     }
 }
