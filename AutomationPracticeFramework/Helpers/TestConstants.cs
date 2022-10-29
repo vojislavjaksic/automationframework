@@ -9,7 +9,7 @@ namespace AutomationPracticeFramework.Helpers
         public const string username = "vojislavjaksic14@gmail.com";
         public const string Password = "Peritas14";
 
-        public const string FirstName = "John";
+        public const string FirstName = "Vojislav";
         public const string LastName = "Smith";
         public const string Address = "228 Park Ave S";
         public const string City = "New York";

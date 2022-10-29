@@ -6,31 +6,27 @@ using OpenQA.Selenium.Support.UI;
 
 namespace AutomationPracticeFramework.Pages
 {
-    class MyAccountPage
+    class MyWishlistPage
     {
         readonly IWebDriver driver;
+        public By wishlistpage = By.Id("mywishlist");
+        public By nameset = By.Id("name");
+        public By submit = By.Id("submitWishlist");
+        public By wlsname = By.ClassName("block-center");
 
-        public By myaccount = By.Id("my-account");
-        public By navigationpage = By.Id("navigation_page");
-        public By wishlistenter = By.ClassName("lnk_wishlist");
-        public By myinfo = By.ClassName("icon-user");
-        public MyAccountPage(IWebDriver driver)
+        public MyWishlistPage(IWebDriver driver)
         {
             this.driver = driver;
-            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(myaccount));
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(wishlistpage));
 
         }
-
-        public bool MyAccountPageIsDisplayed(string pageName)
+        public bool MyWishlistPageIsDisplayed(string pageName)
         {
             By page = By.XPath("//*[@class='navigation_page'][contains(text(),'" + pageName + "')]");
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
             return wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(page)).Displayed;
 
         }
-
     }
 }
-
-    

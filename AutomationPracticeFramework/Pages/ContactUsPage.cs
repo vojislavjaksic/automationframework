@@ -15,6 +15,7 @@ namespace AutomationPracticeFramework.Pages
         public By contactEmail = By.Id("email");
         public By message = By.Id("message");
         public By Sendbtn = By.Id("submitMessage");
+        public By uploadBtn = By.Id("fileUpload");
         public By successMessage = By.ClassName("alert-success");
         public ContactUsPage(IWebDriver driver)
         {

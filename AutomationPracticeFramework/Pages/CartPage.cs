@@ -6,23 +6,21 @@ using OpenQA.Selenium.Support.UI;
 
 namespace AutomationPracticeFramework.Pages
 {
-    class MyAccountPage
+    class CartPage
     {
         readonly IWebDriver driver;
 
-        public By myaccount = By.Id("my-account");
-        public By navigationpage = By.Id("navigation_page");
-        public By wishlistenter = By.ClassName("lnk_wishlist");
-        public By myinfo = By.ClassName("icon-user");
-        public MyAccountPage(IWebDriver driver)
+        public By cartpage = By.Id("order");
+        public By productname = By.CssSelector(".cart_description .product-name");
+
+        public CartPage(IWebDriver driver)
         {
             this.driver = driver;
-            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(myaccount));
-
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(cartpage));
         }
 
-        public bool MyAccountPageIsDisplayed(string pageName)
+        public bool CartPageIsDisplayed(string pageName)
         {
             By page = By.XPath("//*[@class='navigation_page'][contains(text(),'" + pageName + "')]");
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
@@ -30,7 +28,8 @@ namespace AutomationPracticeFramework.Pages
 
         }
 
+        
+
+
     }
 }
-
-    

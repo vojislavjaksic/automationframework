@@ -25,6 +25,8 @@ namespace AutomationPracticeFramework.Steps
             ut.DropdownSelect(cup.subjectHeading, heading);
             ut.EnterTextInElement(cup.contactEmail, ut.GenerateRandomEmail());
             ut.EnterTextInElement(cup.message, message);
+            //string path = @"C:\Users\Marko\Downloads\Cartoon-Prince-And-Princess-Drawing-High-Quality (1).jpg";
+            //Driver.FindElement(cup.uploadBtn).SendKeys(path);
         }
         
         [When(@"user submits the form")]
