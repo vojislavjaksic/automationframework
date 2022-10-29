@@ -60,7 +60,7 @@ namespace AutomationPracticeFramework.Steps
         }
 
         [Given(@"clicks '(.*)' button")]
-        public void GivenClicksButton()
+        public void GivenClicksButton(string button)
         {
             SignUpPage sip = new SignUpPage(Driver);
             ut.ClickOnElement(sip.createaccount);
@@ -142,16 +142,23 @@ namespace AutomationPracticeFramework.Steps
 
 
             ut.EnterTextInElement(mpi.lastnamefield, lastName);
-            wishlistName.wishlistname = ut.ReturnTextFromElement(mpi.lastnamefield);
+            personData.FullName = ut.ReturnTextFromElement(mpi.lastnamefield);
                         
         }
 
         [Given(@"enters '(.*)' password and clicks on Save button")]
-        public void GivenEntersPasswordAndClicksOnSaveButton(int p0)
+        public void GivenEntersPasswordAndClicksOnSaveButton(string password)
         {
-            ScenarioContext.Current.Pending();
+            MyPersonalnfo mpi = new MyPersonalnfo(Driver);
+            ut.EnterTextInElement(mpi.pass, password);
+            ut.ClickOnElement(mpi.save);
         }
 
+        [Then(@"he should have updated last name")]
+        public void ThenHeShouldHaveUpdatedLastName()
+        {
+            Assert.True(ut.TextPresentInElement(personData.FullName).Displayed, "");
+        }
 
 
 

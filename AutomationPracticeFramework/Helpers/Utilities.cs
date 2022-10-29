@@ -48,7 +48,7 @@ namespace AutomationPracticeFramework.Helpers
 
         public string GenerateRandomName()
         {
-            return string.Format("name{0}", RandomName.Next(10000, 100000));
+            return string.Format("name", RandomName.Next(0,0));
         }
 
 
@@ -69,5 +69,7 @@ namespace AutomationPracticeFramework.Helpers
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
             return wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(textelement));
         }
+
+        
     }
 }

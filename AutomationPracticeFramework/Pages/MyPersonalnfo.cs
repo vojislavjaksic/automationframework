@@ -12,6 +12,8 @@ public class MyPersonalnfo
 
         public By mypersonalpage = By.Id("columns");
         public By lastnamefield = By.Id("lastname");
+        public By pass = By.Id("old_passwd");
+        public By save = By.Name("submitIdentity");
 
         public MyPersonalnfo(IWebDriver driver)
         {
